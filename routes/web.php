@@ -14,11 +14,5 @@ Route::get('/', function () {
 });
 
 Route::get('/inicio', function () {
-    return view('layouts.index');
-});
-
-Route::get('/main', function () {
-    return view('layouts.main');
-});
-
-
+    return view('dashboard.contenido');
+})->name('inicio');
