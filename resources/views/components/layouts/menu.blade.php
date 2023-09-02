@@ -1,10 +1,8 @@
-@extends('layouts.index')
-@section('menu')
     <div class="nav">
         <div class="sb-sidenav-menu-heading">MENU</div>
         <a class="nav-link" href="#">
             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-            PANEL
+            Inicio
         </a>
         <div class="sb-sidenav-menu-heading">PERSONAL</div>
         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
@@ -38,4 +36,3 @@
         </a>
 
     </div>
-@endsection
