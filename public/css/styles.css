@@ -8146,6 +8146,11 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
+.bg-login {
+  --bs-bg-opacity: 1;
+  background-image: url('../img/home/Inicio.png') !important;
+}
+
 .bg-secondary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
@@ -8178,7 +8183,7 @@ textarea.form-control-lg {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: red !important;
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
 }
 
 .bg-black {
@@ -8224,6 +8229,7 @@ textarea.form-control-lg {
 .bg-gradient {
   background-image: var(--bs-gradient) !important;
 }
+
 
 .user-select-all {
   -webkit-user-select: all !important;
