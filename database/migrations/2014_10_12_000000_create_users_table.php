@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('apellido_Materno', 50);
             $table->string('correo',50)->unique();
             $table->string('contrasena', 10);
-            $table->foreignId('rol_id')->constrained('roles', 'rol_id');
             $table->timestamps();
         });
     }
