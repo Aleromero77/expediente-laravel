@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('apellido_Paterno', 50);
             $table->string('apellido_Materno', 50);
             $table->string('correo',50)->unique();
-            $table->string('contrasena', 10);
+            $table->string('contrasena', 200);
             $table->timestamps();
         });
     }
