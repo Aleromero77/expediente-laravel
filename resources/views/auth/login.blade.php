@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="icon" type="image/jpg" href="{{ asset('yoloma.ico') }}">
         <title>YOLOMA</title>
-        <link href="{{asset('css/styles.css')}}" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-login">
@@ -19,22 +19,22 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     
                                     <div class="card-body">
-                                        <form action="{{route('login')}}" method="POST">
-                                            @csrf
+                                        <form>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="correo" type="correo" placeholder="Ingrese su correo" />
-                                                <label for="correo">Correo</label>
+                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <label for="inputEmail">Correo</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="contrasena" type="password" placeholder="Ingrese Contraseña" />
-                                                <label for="contrasena">Contraseña</label>
+                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                <label for="inputPassword">Contraseña</label>
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                                                 <label class="form-check-label" for="inputRememberPassword">Recordar cuenta</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+                                                <a class="small" href="password.html"></a>
+                                                <a class="btn btn-primary" href="{{route('inicio')}}">Iniciar Sesion</a>
                                             </div>
                                         </form>
                                     </div>
