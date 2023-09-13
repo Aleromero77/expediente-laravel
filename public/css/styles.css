@@ -2877,6 +2877,23 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #0d6efd;
 }
 
+.btn-yoloma {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #690dfd;
+  --bs-btn-border-color: #690dfd;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #690dfd;
+  --bs-btn-hover-border-color: #690dfd;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #690dfd;
+  --bs-btn-active-border-color: #690dfd;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #690dfd;
+  --bs-btn-disabled-border-color: #690dfd;
+}
+
 .btn-secondary {
   --bs-btn-color: #fff;
   --bs-btn-bg: #6c757d;
@@ -6706,6 +6723,17 @@ textarea.form-control-lg {
   background-color: RGBA(248, 249, 250, var(--bs-bg-opacity, 1)) !important;
 }
 
+.bg-login {
+  --bs-bg-opacity: 1;
+  background-image: url('../img/home/Inicio.png') !important;
+}
+
+.img-center{
+  display: flex;
+  justify-content: center;
+  
+}
+
 .text-bg-dark {
   color: #fff !important;
   background-color: RGBA(33, 37, 41, var(--bs-bg-opacity, 1)) !important;
@@ -8146,11 +8174,6 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
 }
 
-.bg-login {
-  --bs-bg-opacity: 1;
-  background-image: url('../img/home/Inicio.png') !important;
-}
-
 .bg-secondary {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
@@ -8183,7 +8206,7 @@ textarea.form-control-lg {
 
 .bg-dark {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #212529 !important;
 }
 
 .bg-black {
@@ -8229,7 +8252,6 @@ textarea.form-control-lg {
 .bg-gradient {
   background-image: var(--bs-gradient) !important;
 }
-
 
 .user-select-all {
   -webkit-user-select: all !important;
