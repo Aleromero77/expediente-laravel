@@ -10,7 +10,12 @@
 </head>
 
 <body>
-    <a href="{{ route('inicio') }}" class="button-link">¡Iniciar Sesión!</a>
+    @guest
+    <a href="{{ route('login') }}" class="button-link">¡Iniciar Sesión!</a>
+    @endguest
+    @auth
+    <a href="{{ route('inicio') }}" class="button-link">Menu</a>
+    @endauth
 </body>
 
 </html>
