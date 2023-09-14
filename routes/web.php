@@ -10,11 +10,12 @@ Route::view('/', 'welcome')->name('welcome');
 Route:: view('inicio', 'dashboard.inicio')->name('inicio')->Middleware('auth');
 
 
-Route:: view('register', 'auth.register')->name('register')->Middleware('auth');;
-Route::POST ('register', [RegisteredUserController::class, 'store'])->Middleware('auth');;
-Route::view('login', 'auth.login')->name('login');
-Route::POST ('login', [AuthenticatedSessionController::class, 'iniciarSesion']);
+Route:: view('registro', 'auth.register')->name('register')->Middleware('auth');;
+Route::POST ('registro', [RegisteredUserController::class, 'store'])->Middleware('auth');;
+Route::view('inicar-Sesion', 'auth.login')->name('login');
+Route::POST ('inicar-Sesion', [AuthenticatedSessionController::class, 'iniciarSesion']);
 Route::POST ('salir', [AuthenticatedSessionController::class, 'cerrarSesion']);
 
-Route:: view('perfil', 'auth.perfil')->name('Perfil')->Middleware('auth');;
-Route::view('consultasUsers', 'dashboard.consultasUsers')->name('consultasUsers');
+Route::get('consultasUsers', [AuthenticatedSessionController::class, 'usersTables'])->name('consultasUsers');
+
+Route::view('perfil', 'auth.perfil')->name('perfil');
