@@ -16,6 +16,6 @@ Route::view('inicar-Sesion', 'auth.login')->name('login');
 Route::POST ('inicar-Sesion', [AuthenticatedSessionController::class, 'iniciarSesion']);
 Route::POST ('salir', [AuthenticatedSessionController::class, 'cerrarSesion']);
 
-Route::get('consultasUsers', [AuthenticatedSessionController::class, 'usersTables'])->name('consultasUsers');
+Route::get('Usuarios', [AuthenticatedSessionController::class, 'usersTables'])->name('consultasUsers');
 
 Route::view('perfil', 'auth.perfil')->name('perfil');

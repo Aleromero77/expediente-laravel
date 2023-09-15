@@ -27,7 +27,8 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Apellidos</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellido Materno</th>
                             <th scope="col">Genero</th>
                             <th scope="col">Domicilio</th>
                             <th scope="col">Telefono</th>
@@ -38,7 +39,8 @@
                     <tbody>
 
                         @foreach ($users as $user)
-                        <tr>
+                        <tr >
+                            <td >{{ $user->id }}</td>
                             <td>{{ $user->nombre }}</td>
                             <td>{{ $user->apellido_Paterno }}</td>
                             <td>{{ $user->apellido_Materno }}</td>

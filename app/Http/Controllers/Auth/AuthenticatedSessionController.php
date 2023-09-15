@@ -49,7 +49,7 @@ class AuthenticatedSessionController extends Controller
         $users = DB::table('users')->select('id', 'nombre', 'apellido_Paterno', 'apellido_Materno','genero','domicilio','telefono','correo','created_at')
         ->where('nombre', 'LIKE','%'.$search.'%')
         ->orWhere('apellido_Paterno','LIKE','%'.$search.'%')
-        ->orderBy('apellido_Paterno','asc')
+        ->orderBy('id','asc')
         ->paginate(10);
         
         return view('dashboard.consultasUsers', compact('users', 'search'));
