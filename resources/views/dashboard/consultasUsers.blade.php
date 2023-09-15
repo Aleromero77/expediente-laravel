@@ -1,10 +1,10 @@
-<x-layouts.app title="Consultas Usuarios">
+<x-layouts.app title="Usuarios">
 
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">Tablas</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="{{ route('inicio') }}">Incio</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('inicio') }}">Inicio</a></li>
                 <li class="breadcrumb-item active">Tablas</li>
             </ol>
             <div class="card mb-4">
