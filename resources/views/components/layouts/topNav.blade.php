@@ -22,7 +22,7 @@
                     <i class="fas fa-user fa-fw"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{route('Perfil')}}">PERFIL</a></li>
+                    <li><a class="dropdown-item" href="{{route('perfil')}}">PERFIL</a></li>
                     <form action="/salir" method="POST">
                         @csrf
                         <li><a class="dropdown-item" onclick="this.closest('form').submit()">CERRAR SESION</a></li>

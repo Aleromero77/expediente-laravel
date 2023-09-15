@@ -19,13 +19,13 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => 'Dpto de Sistemas',
+            'nombre' => fake()->name(),
             'apellido_Paterno' => fake()->lastName(),
             'apellido_Materno' => fake()->lastName(),
             'genero' => fake()->randomElement(['Masculino', 'Femenino', 'No especificado']),
             'domicilio' => fake()->address(),
             'telefono' => fake()->phoneNumber(),
-            'correo' => 'sistemas@example.com',
+            'correo' => fake()->email(),
             'contrasena' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
