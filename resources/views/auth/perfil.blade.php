@@ -1,49 +1,80 @@
-{{-- <x-layouts.app title="Consulta Prueba">
+<x-layouts.app title="Perfil">
+    <main>
+        @if (session('info'))
+            <x-sweetAlert2.info />
+        @endif
+        @if ($errors->Any())
 
-    <form action="{{ route('perfil') }}" method="GET" class="mb-3">
-        <div class="input-group">
-            <input type="text" name="search" class="form-control" placeholder="Buscar usuarios" value="{{$search}}">
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <div class="alert alert-danger m3">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
+                        <div class="card-header">
+                            <h3 class="text-center font-weight-light my-4">Perfil de {{ $user->nombre }}</h3>
+                        </div>
+                        <div class="card-body">
+
+                            <x-form.form method="put" action="{{ route('users.update', $user->id) }}">
+                                <div class="row mb-3">
+                                    <x-form.field-lf name="nombre" value="{{ $user->nombre }}" required>
+                                        Nombre
+                                    </x-form.field-lf>
+
+                                    <x-form.field-lf name="apellido_Paterno" value=" {{ $user->apellido_Paterno }}"
+                                        class="mb-4" required>
+                                        Apellido Paterno
+                                    </x-form.field-lf>
+
+                                    <x-form.field-lf name="apellido_Materno" value="{{ $user->apellido_Materno }}"
+                                        required>
+                                        Apellido Materno
+                                    </x-form.field-lf>
+
+                                    <x-form.field-lf name="genero" value="{{ $user->genero }}" required>
+                                        Genero
+                                    </x-form.field-lf>
+
+                                </div>
+                                <x-form.field-xl name="domicilio" value="{{ $user->domicilio }}" required>
+                                    Domicilio
+                                </x-form.field-xl>
+                                <div class="row mb-3">
+                                    <x-form.field-lf name="telefono" value="{{ $user->telefono }}" required>
+                                        Telefono
+                                    </x-form.field-lf>
+
+                                    <x-form.field-lf name="correo" value="{{ $user->correo }}" type="email" required>
+                                        Correo
+                                    </x-form.field-lf>
+                                </div>
+                                <x-form.field-xl name="contrasena" type="password">
+                                    Contraseña
+                                </x-form.field-xl>
+
+
+
+                                <div class="mt-4 mb-0">
+                                    <div class="d-grid">
+                                        <button class="btn btn-primary" type="submit">Actualizar Perfil</button>
+                                    </div>
+                                </div>
+
+                            </x-form.form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </form>
-    
-
-    <table id="#users-table" class="display" style="width:100%">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Genero</th>
-                <th>Domicilio</th>
-                <th>Telefono</th>
-                <th>Email</th>
-                <th>Fecha de Registro</th>
-            </tr>
-        </thead>
-        <tbody>
-        
-            @foreach ($users as $user)
-            <tr>
-                <td>{{ $user->nombre }}</td>
-                <td>{{ $user->apellido_Paterno }}</td>
-                <td>{{ $user->apellido_Materno }}</td>
-                <td>{{ $user->genero }}</td>
-                <td>{{ $user->domicilio }}</td>
-                <td>{{ $user->telefono }}</td>
-                <td>{{ $user->correo}}</td>
-                <td>{{ \Carbon\Carbon::parse($user->created_at)->format('Y-m-d') }}</td>
-            </tr>
-        @endforeach
-            
-        </tbody>
-    </table>
-
-    <div class="d-flex justify-content-center">
-        {{ $users->links() }}
-    </div>
-
-</x-layouts.app> --}}
-
-
-CONFIGURAR VISTA
+    </main>
+</x-layouts.app>

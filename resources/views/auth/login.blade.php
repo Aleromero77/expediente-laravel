@@ -22,44 +22,32 @@
                                     </div>
                                     
                                     <div class="card-body">
-                                        <form action="{{route('login')}}" method="POST">
-                                            @csrf
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" 
-                                                id="correo" 
-                                                type="email" 
-                                                name="correo"
-                                                value="{{old('correo')}}"
-                                                placeholder="Ingrese su correo" />
-                                                <label for="correo">Correo</label>
+
+                                        <x-form.form action="{{route('login')}}" method="post">
+                                                <x-form.field-xl id="correo" type="email" name="correo" value="{{old('correo')}}">
+                                                    Correo    
+                                                </x-form.field-xl>
                                                 {{$errors->first('correo')}} 
-
-                                            <div class="form-floating mb-3">   
-                                                <input class="form-control" 
-                                                id="contrasena" 
-                                                type="password" 
-                                                name="contrasena"
-                                                placeholder="Ingrese Contraseña" />
-
-                                                 
-                                                <label for="contrasena">Contraseña</label>
+                                                <x-form.field-xl id="contrena" type="password" name="contrasena">
+                                                    Contraseña
+                                                </x-form.field-xl>
                                                 {{$errors->first('contrasena')}} 
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input class="form-check-input" 
-                                                name="remember" 
-                                                id="remember" 
-                                                type="checkbox" />
-                                                <label class="form-check-label" for="remember">Recordar cuenta</label>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
 
-                                               @error('message')
-                                                   
-                                               @enderror
-                                            </div>
-                                        </form>
+                                                <div class="form-check mb-3">
+                                                    <input class="form-check-input" 
+                                                    name="remember" 
+                                                    id="remember" 
+                                                    type="checkbox" />
+                                                    <label class="form-check-label" for="remember">Recordar cuenta</label>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                                    <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+    
+                                                   @error('message')
+                                                       
+                                                   @enderror
+                                                </div>
+                                        </x-form.form>
                                     </div>
                                 </div>
                             </div>

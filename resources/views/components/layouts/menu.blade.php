@@ -13,8 +13,8 @@
         </a>
         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="{{route('register')}}">Registro</a>
-                <a class="nav-link" href="{{route('consultasUsers')}}">Consultas</a>
+                <a class="nav-link" href="{{route('users.create')}}">Registro</a>
+                <a class="nav-link" href="{{route('users.index')}}">Consultas</a>
             </nav>
         </div>
        

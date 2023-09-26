@@ -1,35 +1,68 @@
 <x-layouts.app title="Inicio">
     <main>
         <div class="container-fluid px-4">
-            {{-- <h1 class="mt-4">Inicio</h1> --}}
+            <h1 class="mt-4">Bienvenido</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item active"></li>
+                <li class="breadcrumb-item active">Inicio</li>
             </ol>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <div class="card shadow-lg border-0 rounded-lg mt-5">
-                            <div class="card-header">
-                                <h3 class="text-center font-weight-light my-4">Bienvenido</h3>
-                            </div>
-                            <div class="card-body">
-                            <p class="card-text text-center">Si tiene alguna duda o presenta algún error, favor de comunicarse al Dpto. Sistemas.</p>
-                            <p class="card-text text-center">Para salir del sistema, de click en la parte superior derecha y luego de click en <strong> "Cerrar Sesión" </strong> </p>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">
+                            <i class="fa-solid fa-users fa-2xl"></i>
+                             <strong>{{$totalUsuarios}}</strong>
+                             Usuarios
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="{{route('users.index')}}">Ver</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-info text-white mb-4">
+                        <div class="card-body">
+                            <i class="fa-solid fa-bell-concierge fa-2xl"></i>
+                            0 Recepcionistas
+
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">Ver</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body">
+                            <i class="fa-solid fa-chalkboard-user fa-2xl"></i>
+                            0 Terapeutas
+
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">Ver</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">
+                            <i class="fa-solid fa-user fa-2xl"></i>
+                            0 Pacientes
+
+                        </div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">Ver</a>
+                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <!--PANELES -->
-            </div>
-            <div class="row">
-                <!--  CHAR1 -->
-            </div>
-            <div class="col-xl-6">
-                <!-- BAR CHAR -->
-            </div>
 
-            <!-- TABLAS -->
         </div>
     </main>
 </x-layouts.app>
