@@ -41,8 +41,7 @@ class RegisteredUserController extends Controller
         'contrasena' =>  Hash::make($request->contrasena)
        ]);
 
-       return to_route('register')
-       ->with('status','Se creo el usuario');
+       return to_route('register')->with('info','Se creo el usuario correctamente');
     }
 
 }

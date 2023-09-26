@@ -1,6 +1,19 @@
 <x-layouts.app title="Registro">
-    <main>
-        <div class="container">
+    <main class="mb-4">
+        @if (session('info'))
+            <x-sweetAlert2.success />
+        @endif
+        @if ($errors->Any())
+            <x-sweetAlert2.danger/>
+            <div class="alert alert-danger m3">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <div class="container mb-4">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
                     <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -8,121 +21,53 @@
                             <h3 class="text-center font-weight-light my-4">Registro</h3>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('register') }}">
-                                @csrf
+                            <x-form.form method="post" class="form-register" action="{{ route('users.store') }}">
+
                                 <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <div class="form-floating mb-3 mb-md-0">
-                                            <input 
-                                            class="form-control"
-                                            placeholder="Enter your name" 
-                                            name="nombre" 
-                                            id="nombre" 
-                                            type="text"
-                                            autofocus="autofocus"
-                                            value="{{old('nombre')}}" />
-                                            <label for="nombre">Nombre(s)</label>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-floating">
-                                            <input 
-                                            class="form-control" 
-                                            id="apellido_Paterno" 
-                                            type="text"
-                                            placeholder="Enter your last name"
-                                            name="apellido_Paterno"
-                                            value="{{old('apellido_Paterno')}}" />
-                                            <label for="apellido_Paterno">Apellido Paterno</label>
-                                        </div>
-                                    </div>
+                                    <x-form.field-lf id="nombre" name="nombre" value="{{ old('nombre') }}"
+                                        autofocus="autofocus">
+                                        Nombre
+                                    </x-form.field-lf>
 
+                                    <x-form.field-lf id="apellido_Paterno" value="{{ old('apellido_Paterno') }}"
+                                        name="apellido_Paterno" class="mb-4">
+                                        Apellido Paterno
+                                    </x-form.field-lf>
 
-                                    <div class="col-md-6">
-                                        <br>
-                                        <div class="form-floating">
-                                            <input 
-                                            class="form-control" 
-                                            id="apellido_Materno" 
-                                            type="text"
-                                            placeholder="Enter your last name"
-                                            name="apellido_Materno"
-                                            value="{{old('apellido_Materno')}}" />
-                                            <label for="apellido_Materno">Apellido Materno</label>
-                                        </div>
-                                    </div>
+                                    <x-form.field-lf id="apellido_Materno" name="apellido_Materno"
+                                        value="{{ old('apellido_Materno') }}">
+                                        Apellido Materno
+                                    </x-form.field-lf>
 
-                                    <div class="col-md-6">
-                                        <br>
-                                        <div class="form-floating">
-                                            <input 
-                                            class="form-control" 
-                                            id="genero" 
-                                            type="text"
-                                            placeholder="Enter your gender"
-                                            name="genero"
-                                            value="{{old('genero')}}" />
-                                            <label for="genero">Genero</label>
-                                        </div>
-                                    </div>
+                                    <x-form.field-lf id="genero" name="genero" value="{{ old('genero') }}"
+                                        class="mb-4">
+                                        Genero
+                                    </x-form.field-lf>
 
-                                    <div class="col-md-6">
-                                        <br>
-                                        <div class="form-floating">
-                                            <input 
-                                            class="form-control" 
-                                            id="domicilio" 
-                                            type="text"
-                                            placeholder="Enter your address"
-                                            name="domicilio"
-                                            value="{{old('domicilio')}}" />
-                                            <label for="domicilio">Domicilio</label>
-                                        </div>
-                                    </div>
-                                    
+                                    <x-form.field-lf id="domicilio" name="domicilio" value="{{ old('domicilio') }}">
+                                        Domicilio
+                                    </x-form.field-lf>
 
-                                    <div class="col-md-6">
-                                        <br>
-                                        <div class="form-floating">
-                                            <input 
-                                            class="form-control" 
-                                            id="telefono" 
-                                            type="text"
-                                            placeholder="Enter your phone"
-                                            name="telefono"
-                                            value="{{old('telefono')}}" />
-                                            <label for="telefono">Telefono</label>
-                                        </div>
-                                    </div>
-                                    
-
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input 
-                                    class="form-control" 
-                                    id="correo" 
-                                    type="email"
-                                    placeholder="name@example.com"
-                                    name="correo"
-                                    value="{{old('correo')}}" />
-                                    <label for="correo">Correo</label>
+                                    <x-form.field-lf id="telefono" name="telefono" value="{{ old('telefono') }}">
+                                        Telefono
+                                    </x-form.field-lf>
                                 </div>
 
-                                <div class="form-floating mb-3">
-                                    <input 
-                                    class="form-control" 
-                                    id="contrasena" 
-                                    type="password"
-                                    name="contrasena"
-                                     />
-                                    <label for="contrasena">Contraseña</label>
-                                </div>
+                                <x-form.field-xl id="correo" name="correo" type="email"
+                                    value="{{ old('correo') }}">
+                                    Correo
+                                </x-form.field-xl>
+
+                                <x-form.field-xl id="contrasna" name="contrasena" type="password">
+                                    Contraseña
+                                </x-form.field-xl>
+
                                 <div class="mt-4 mb-0">
                                     <div class="d-grid">
-                                        <button class="btn btn-yoloma btn-block" type="submit">Crear Usuario</button>
+                                        <button class="btn btn-primary" type="submit">Crear Usuario</button>
                                     </div>
-                            </form>
+                                </div>
+                            </x-form.form>
                         </div>
 
                     </div>
@@ -130,5 +75,6 @@
             </div>
         </div>
     </main>
+
 
 </x-layouts.app>
