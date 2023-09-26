@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="icon" type="image/jpg" href="{{ asset('yoloma.ico') }}">
-    <title> YOLOMA </title>
+    <title> Yoloma | Expendiente Clínico </title>
 </head>
 
 <body>

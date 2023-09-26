@@ -5,14 +5,7 @@
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Inicio</li>
             </ol>
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5>Bienvenido al sistema control de usuarios de Yoloma</h5>
-                    <ul>
-                        <li><strong>Asegurate de cerrar sesion al finalizar tus actividades</strong></li>
-                        <li><strong>Todas tus actividades son monitoreadas por el Dpt. de SISTEMAS</strong></li>
-                    </ul>
-                </div>
+
             </div>
 
             <div class="row">

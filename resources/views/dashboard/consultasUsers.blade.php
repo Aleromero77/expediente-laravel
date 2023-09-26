@@ -1,18 +1,11 @@
-@section('css')
-    <link rel="stylesheet"
-        href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css') }}">
-    <link rel="stylesheet"
-        href="{{ asset('https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css') }}">
-    <script src="{{ asset('https://use.fontawesome.com/releases/v6.3.0/js/all.js') }}" crossorigin="anonymous"></script>
-@endsection
+
 
 <x-layouts.app title="Consultas Usuarios">
     <main>
         <div class="container-fluid px-4">
             <h1 class="mt-4">Tablas de Usuarios</h1>
             <ol class="breadcrumb mb-4">
-                <li class="breadcrumb-item"><a href="{{ route('inicio') }}">Incio</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('inicio') }}">Inicio</a></li>
                 <li class="breadcrumb-item active">Tablas</li>
             </ol>
             <div class="card mb-4">
