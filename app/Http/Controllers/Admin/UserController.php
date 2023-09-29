@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:users')->only('store', 'create');
+    }
     /**
      * Display a listing of the resource.
      */

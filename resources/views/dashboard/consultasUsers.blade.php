@@ -126,6 +126,7 @@
         
                 if (!isAdminOrRecep) {
                     table.column(3).visible(false); // Oculta la columna 'telefono'
+                    table.column(4).visible(false);
                     table.column(5).visible(false);
                 }
             });

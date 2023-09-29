@@ -48,9 +48,11 @@
                                         Domicilio
                                     </x-form.field-lf>
 
-                                    <x-form.field-lf id="telefono" name="telefono" value="{{ old('telefono') }}">
-                                        Telefono
+                                    <x-form.field-lf id="telefono" name="telefono" type="phone"  maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                                        value="{{ old('telefono') }}">
+                                        Telefono    <small>10 digitos</small>
                                     </x-form.field-lf>
+                                    
                                 </div>
 
                                 <x-form.field-xl id="correo" name="correo" type="email"

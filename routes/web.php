@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Routing\RouteGroup;
+use Illuminate\Validation\Rules\Can;
 
 Route::view('/', 'welcome')->name('welcome');      
 Route::view('iniciar-Sesion', 'auth.login')->name('login');
@@ -14,6 +15,8 @@ Route::POST('iniciar-Sesion', [AuthenticatedSessionController::class, 'iniciarSe
 //-------------------------------------------------------------------------------------------\\
 
 Route::middleware(['auth'])->group(function () {
+
+    
     
     Route::POST('salir', [AuthenticatedSessionController::class, 'cerrarSesion'])->name('salir');
     Route::resource('usuarios', UserController::class)

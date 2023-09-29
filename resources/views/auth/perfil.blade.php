@@ -48,8 +48,9 @@
                                     Domicilio
                                 </x-form.field-xl>
                                 <div class="row mb-3">
-                                    <x-form.field-lf name="telefono" value="{{ $user->telefono }}" required>
-                                        Telefono
+                                    <x-form.field-lf id="telefono" name="telefono" type="phone"  maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                                        value="{{ $user->telefono}}" required>
+                                        Telefono    <small>10 digitos</small>
                                     </x-form.field-lf>
 
                                     <x-form.field-lf name="correo" value="{{ $user->correo }}" type="email" required>
