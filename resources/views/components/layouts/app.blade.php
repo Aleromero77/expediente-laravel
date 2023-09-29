@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-
+    <title>YOLOMA - {{ $title }}</title>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link rel="icon" type="image/jpg" href="{{ asset('yoloma.ico') }}">
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css') }}">
