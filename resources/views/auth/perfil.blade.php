@@ -1,7 +1,7 @@
 <x-layouts.app title="Perfil">
     <main>
         @if (session('info'))
-            <x-sweetAlert2.info />
+            <x-sweetAlert2.info :title="'Se actualizo con extio'"/>
         @endif
         @if ($errors->Any())
 
@@ -56,10 +56,14 @@
                                         Correo
                                     </x-form.field-lf>
                                 </div>
+                                <x-form.field-xl value="{{ $rol}}" readonly>
+                                    Rol
+                                </x-form.field-xl>
+
                                 <x-form.field-xl name="contrasena" type="password">
                                     Contraseña
                                 </x-form.field-xl>
-
+                               
 
 
                                 <div class="mt-4 mb-0">

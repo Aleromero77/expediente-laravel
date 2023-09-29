@@ -1,10 +1,8 @@
 @section('css')
-    <link rel="stylesheet"
-        href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css') }}">
-    <script src="{{ asset('https://use.fontawesome.com/releases/v6.3.0/js/all.js') }}" crossorigin="anonymous"></script>
 @endsection
 
 <x-layouts.app title="Consultas Usuarios">
@@ -24,8 +22,7 @@
             </div>
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    Usuarios
+                    <a class="btn btn-success" href="{{route('users.create')}}">Registrar Usuario</a>
                 </div>
 
                 <div class="card-body">
@@ -52,8 +49,8 @@
         <script src="{{ asset('https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js') }}"></script>
         <script src="{{ asset('https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js') }}"></script>
-        <script src="{{ asset('js/scripts.js') }}"></script>
-        <script>
+        
+        {{-- <script>
             new DataTable('#users-table', {
                 responsive: true,
                 autoWidth: false,
@@ -106,6 +103,33 @@
                     "infoEmpty": "Mostrando 0 de 0 registros",
                 }
             });
+        </script> --}}
+
+        <script>
+            var isAdminOrRecep = @json(auth()->user()->hasRole('sistemas') || auth()->user()->hasRole('recepcion')) ;
+        
+            $(document).ready(function() {
+                var table = new DataTable('#users-table', {
+                    responsive: true,
+                    autoWidth: false,
+                    ajax: '{{ route('dataTables') }}',
+                    columns: [
+                        { data: 'nombre' },
+                        { data: 'apellido_Paterno' },
+                        { data: 'apellido_Materno' },
+                        { data: 'telefono' },
+                        { data: 'correo' },
+                        { data: 'btn' }
+                    ]
+                });
+        
+                if (!isAdminOrRecep) {
+                    table.column(3).visible(false); // Oculta la columna 'telefono'
+                    table.column(5).visible(false);
+                }
+            });
         </script>
+
+
     @endsection
 </x-layouts.app>

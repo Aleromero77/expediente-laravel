@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +29,18 @@ class AppServiceProvider extends ServiceProvider
             'edit' => 'editar',
             
         ]);
+
+        Blade::if('isAdmin', function () {
+            return auth()->user()->hasRole('sistemas');
+        });
+
+        Blade::if('isAdminOrRecep', function () {
+            return auth()->user()->hasRole('sistemas') || auth()->user()->hasRole('recepcion');
+        });
+    
+        Blade::if('isUser', function () {
+            return auth()->user()->hasRole('terapeuta');
+        });
 
         
     }}

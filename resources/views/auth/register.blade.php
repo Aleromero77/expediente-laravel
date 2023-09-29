@@ -1,10 +1,10 @@
 <x-layouts.app title="Registro">
     <main class="mb-4">
         @if (session('info'))
-            <x-sweetAlert2.success />
+            <x-sweetAlert2.success :title="'Usuario Registrado'" />
         @endif
         @if ($errors->Any())
-            <x-sweetAlert2.danger/>
+            <x-sweetAlert2.danger :title="'Usuario NO Registrado'"/>
             <div class="alert alert-danger m3">
                 <ul>
                     @foreach ($errors->all() as $error)

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,13 +17,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        /*   $search = trim($request->get('search'));
-        $users = DB::table('users')->select('id', 'nombre', 'apellido_Paterno', 'apellido_Materno', 'genero', 'domicilio', 'telefono', 'correo', 'created_at')
-            ->where('nombre', 'LIKE', '%' . $search . '%')
-            ->orWhere('apellido_Paterno', 'LIKE', '%' . $search . '%')
-            ->orWhere('correo', 'LIKE', '%' . $search . '%')
-            ->orderBy('id', 'asc')
-            ->paginate(10); */
+
         $users = User::all();
         return view('dashboard.consultasUsers', compact('users'));
     }
@@ -60,7 +55,7 @@ class UserController extends Controller
             'telefono' => $request->telefono,
             'correo' => $request->correo,
             'contrasena' =>  Hash::make($request->contrasena)
-        ]);
+        ])->assignRole('paciente');
 
         return to_route('users.create')->with('info', 'ok');
     }
@@ -70,9 +65,43 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->hasRole('sistemas')) {
+            $roles = Role::skip(1)->take(4)->get();
+        }else if (Auth::user()->hasRole('recepcion')) {
+            $roles = Role::skip(2)->take(4)->get();
+        }else{
+            $roles = Role::skip(3)->take(4)->get();
+        }
+        
+        
         $user = User::findOrFail($id);
-        return view('auth.info', compact('user'));
-      
+        $rol = $user->getRoleNames()->first();
+        
+        return view('auth.info', compact('user', 'roles', 'rol'));
+    }
+
+    public function roles(Request $request, User  $user)
+    {
+        $currentRoles = $user->getRoleNames();
+        $newRole = Role::where('name', $request->roles)->first();
+        
+        if (Auth::user()->hasRole('sistemas') || Auth::user()->hasRole('recepcion') ) { // you can pass an id or slug
+            if ($user->hasRole($request->roles)) {
+                return redirect()->back()->with('info', 'El usuario ya tiene el rol.');
+            }
+            if (!empty($currentRoles)) {
+                $user->removeRole($currentRoles[0]);
+            } 
+            
+            if ($newRole) {
+                $user->assignRole($newRole);
+                return redirect()->back()->with('success', 'Rol actualizado con éxito.');
+            } 
+        }
+        else{
+            return redirect()->back()->with('error', 'El nuevo rol no existe.');
+        }
+        
     }
 
     /**
@@ -80,8 +109,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        
         $user = User::findOrFail($id);
-        return view('auth.perfil', compact('user'));
+        $rol = $user->getRoleNames()->first();
+        return view('auth.perfil', compact('user','rol'));
     }
 
     /**
@@ -89,18 +120,27 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
-        
+        $request->validate([
+            'nombre' => ['required', 'string', 'max:50'],
+            'apellido_Paterno' => ['required', 'string', 'max:50'],
+            'apellido_Materno' => ['required', 'string', 'max:50'],
+            'genero' => ['required', 'string', 'max:50'],
+            'domicilio' => ['required', 'string', 'max:50'],
+            'telefono' => ['required', 'regex:/^[0-9]{10}$/'],
+            'correo' => ['required'],
+        ]);
+
+
         $input = $request->all();
-        if(!empty($input['contrasena'])){
+        if (!empty($input['contrasena'])) {
             $input['contrasena'] =  Hash::make($input['contrasena']);
-        }else{
+        } else {
             $input = Arr::except($input, array('contrasena'));
         }
 
         $user = User::find($id);
         $user->update($input);
-        return to_route('users.edit',$id)->with('info','se actualizo correctamente');
+        return to_route('users.edit', $id)->with('info', 'se actualizo correctamente');
     }
 
     /**

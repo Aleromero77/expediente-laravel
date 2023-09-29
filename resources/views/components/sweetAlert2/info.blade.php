@@ -1,10 +1,11 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script> 
+
+<script>
+    var title = @json($title ?? '');
     Swal.fire({
         position: 'center',
         icon: 'info',
-        title: 'Se Actualizo correctamente',
-        showConfirmButton: false,
-        timer: 1500
+        title: title,
+        showConfirmButton: true,
     })
 </script>

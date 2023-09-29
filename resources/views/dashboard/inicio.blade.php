@@ -1,5 +1,10 @@
 <x-layouts.app title="Inicio">
     <main>
+
+        @if (session('success'))
+                   <x-sweetAlert2.success :title="'Inicio Correcto'" />
+                @endif
+
         <div class="container-fluid px-4">
             <h1 class="mt-4">Bienvenido</h1>
             <ol class="breadcrumb mb-4">
