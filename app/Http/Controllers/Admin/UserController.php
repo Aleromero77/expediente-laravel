@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:users')->only('store', 'create');
+        $this->middleware('can:users')->only('store', 'create','edit');
     }
     /**
      * Display a listing of the resource.
