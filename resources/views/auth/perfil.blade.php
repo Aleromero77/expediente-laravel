@@ -1,7 +1,7 @@
 <x-layouts.app title="Perfil">
     <main>
         @if (session('info'))
-            <x-sweetAlert2.info />
+            <x-sweetAlert2.info :title="'Se actualizo con extio'"/>
         @endif
         @if ($errors->Any())
 
@@ -48,18 +48,23 @@
                                     Domicilio
                                 </x-form.field-xl>
                                 <div class="row mb-3">
-                                    <x-form.field-lf name="telefono" value="{{ $user->telefono }}" required>
-                                        Telefono
+                                    <x-form.field-lf id="telefono" name="telefono" type="phone"  maxlength="10" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)"
+                                        value="{{ $user->telefono}}" required>
+                                        Telefono    <small>10 digitos</small>
                                     </x-form.field-lf>
 
                                     <x-form.field-lf name="correo" value="{{ $user->correo }}" type="email" required>
                                         Correo
                                     </x-form.field-lf>
                                 </div>
+                                <x-form.field-xl value="{{ $rol}}" readonly>
+                                    Rol
+                                </x-form.field-xl>
+
                                 <x-form.field-xl name="contrasena" type="password">
                                     Contraseña
                                 </x-form.field-xl>
-
+                               
 
 
                                 <div class="mt-4 mb-0">

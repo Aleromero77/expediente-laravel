@@ -25,11 +25,18 @@ class AuthenticatedSessionController extends Controller
                 Auth::login($usuario);
                 $request->session()->regenerate();
                 request()->session()->regenerate();
-                return redirect()->intended('inicio');
-            } else {
-                return redirect(route('welcome'));
+                return redirect()->intended('inicio')->with('success','Usuario o contraseña erronea');
+            } 
+            else {
+                return redirect(route('login'))->with('info','Usuario o contraseña erronea');
             }
         }
+        return redirect(route('login'))->with('fail','Usuario No registrado');
+    }
+
+
+    public function create (){
+        return view('auth.login');
     }
 
     public function cerrarSesion(Request $request)

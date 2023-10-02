@@ -15,14 +15,26 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $superadmin = Role::create(['name' => 'admin']);
+        $admin = Role::create(['name' => 'admin']);
         $sistemas = Role::create(['name' => 'sistemas']);
         $recepcion = Role::create(['name' => 'recepcion']);
         $terapeuta = Role::create(['name' => 'terapeuta']);
         $paciente = Role::create(['name' => 'paciente']);
+
         
-        $permission = Permission::create(['name' => 'register'])->syncRoles($sistemas);
-        $permission = Permission::create(['name' => 'consultasUsers'])->syncRoles($sistemas,$recepcion);
+
+        // ||--------------------------RUTAS PUBLICAS --------------------------------------||
+        $permission = Permission::create(['name' => 'users.index'])
+        ->syncRoles($sistemas,$recepcion);
+
+        
+        // ||--------------------------RUTAS PRIVADAS --------------------------------------||
+        
+        $permission = Permission::create(['name' => 'users.store'])->syncRoles($sistemas);
+        $permission = Permission::create(['name' => 'users.create'])->syncRoles($sistemas);
+        $permission = Permission::create(['name' => 'users.update'])->syncRoles($sistemas);
+        $permission = Permission::create(['name' => 'users.edit'])->syncRoles($sistemas);
+        
 
     }
 }
