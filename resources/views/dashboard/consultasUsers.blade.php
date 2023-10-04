@@ -22,9 +22,11 @@
                 </div>
             </div>
             <div class="card mb-4">
+                @isSistemas
                 <div class="card-header">
                     <a class="btn btn-success" href="{{route('users.create')}}">Registrar Usuario</a>
                 </div>
+                @endisSistemas
 
                 <div class="card-body">
                     <table id="users-table" class="table table-striped" style="width:100%">
@@ -33,8 +35,6 @@
                                 <th>Nombre(s)</th>
                                 <th>Apellido Paterno</th>
                                 <th>Apellido Materno</th>
-                                <th>Telefono</th>
-                                <th>Correo</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -107,7 +107,7 @@
         </script> --}}
 
         <script>
-            var isAdminOrRecep = @json(auth()->user()->hasRole('sistemas') || auth()->user()->hasRole('recepcion')) ;
+            var isAdminOrRecep = @json(auth()->user()->hasRole('sistemas') || auth()->user()->hasRole('coordinacion')) ;
         
             $(document).ready(function() {
                 var table = new DataTable('#users-table', {
@@ -118,10 +118,25 @@
                         { data: 'nombre' },
                         { data: 'apellido_Paterno' },
                         { data: 'apellido_Materno' },
-                        { data: 'telefono' },
-                        { data: 'correo' },
                         { data: 'btn' }
-                    ]
+                    ],
+                    "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "zeroRecords": "No hay registros",
+                    "info": "Pagina _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "search": "Buscar:",
+                    "infoFiltered": "(filtrados de _MAX_ registros)",
+                    "loadingRecords": "Cargando...",
+                    "infoEmpty": "Mostrando 0 de 0 registros",
+                }
                 });
         
                 if (!isAdminOrRecep) {
@@ -129,6 +144,9 @@
                     table.column(4).visible(false);
                     table.column(5).visible(false);
                 }
+
+                
+                
             });
         </script>
 

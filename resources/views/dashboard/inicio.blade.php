@@ -3,13 +3,24 @@
 
         @if (session('success'))
                    <x-sweetAlert2.success :title="'Inicio Correcto'" />
-                @endif
+        @endif
 
         <div class="container-fluid px-4">
             <h1 class="mt-4">Bienvenido</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item active">Inicio</li>
             </ol>
+            @isUser
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5>Bienvenido a expediente clinico de Yoloma</h5>
+                    <ul>
+                        <li><strong>Asegurate de cerrar sesion al finalizar tus actividades</strong></li>
+                    </ul>
+                </div>
+            </div>
+            @endisUser
+            @isSistemas
             <div class="card mb-4">
                 <div class="card-body">
                     <h5>Bienvenido al sistema control de usuarios de Yoloma</h5>
@@ -38,7 +49,7 @@
                     <div class="card bg-info text-white mb-4">
                         <div class="card-body">
                             <i class="fa-solid fa-bell-concierge fa-2xl"></i>
-                            0 Recepcionistas
+                            {{$countRecepcion}} Recepcionistas
 
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
@@ -51,7 +62,7 @@
                     <div class="card bg-success text-white mb-4">
                         <div class="card-body">
                             <i class="fa-solid fa-chalkboard-user fa-2xl"></i>
-                            0 Terapeutas
+                           {{ $countTerapeutas}} Terapeutas
 
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
@@ -64,7 +75,7 @@
                     <div class="card bg-danger text-white mb-4">
                         <div class="card-body">
                             <i class="fa-solid fa-user fa-2xl"></i>
-                            0 Pacientes
+                            {{$countPaciente}} Pacientes
 
                         </div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
@@ -74,7 +85,7 @@
                     </div>
                 </div>
             </div>
-
+        @endisSistemas
         </div>
     </main>
 </x-layouts.app>

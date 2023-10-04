@@ -15,25 +15,24 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $admin = Role::create(['name' => 'admin']);
         $sistemas = Role::create(['name' => 'sistemas']);
+        $coordinacion = Role::create(['name' => 'coordinacion']);
         $recepcion = Role::create(['name' => 'recepcion']);
         $terapeuta = Role::create(['name' => 'terapeuta']);
         $paciente = Role::create(['name' => 'paciente']);
 
         
 
-        // ||--------------------------RUTAS PUBLICAS --------------------------------------||
-        $permission = Permission::create(['name' => 'users.index'])
-        ->syncRoles($sistemas,$recepcion);
+        // ||--------------------------PERMISOS VARIADOS --------------------------------------||
+         $permission = Permission::create(['name' => 'users'])
+                        ->syncRoles($sistemas,$recepcion);
+        $permission = Permission::create(['name' => 'roles'])
+                        ->syncRoles($sistemas,$recepcion);
 
         
-        // ||--------------------------RUTAS PRIVADAS --------------------------------------||
+        // ||--------------------------PERMISOS UNICOS --------------------------------------||
         
-        $permission = Permission::create(['name' => 'users.store'])->syncRoles($sistemas);
-        $permission = Permission::create(['name' => 'users.create'])->syncRoles($sistemas);
-        $permission = Permission::create(['name' => 'users.update'])->syncRoles($sistemas);
-        $permission = Permission::create(['name' => 'users.edit'])->syncRoles($sistemas);
+       // $permission = Permission::create(['name' => 'users'])->syncRoles($sistemas);
         
 
     }
