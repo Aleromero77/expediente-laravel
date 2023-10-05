@@ -13,7 +13,6 @@ class PerfilController extends Controller
 {
     public function edit()
     {
-
         $user = User::findOrFail(Auth::user()->id);
         $rol = $user->getRoleNames()->first();
         if (empty($user)) {
@@ -22,13 +21,9 @@ class PerfilController extends Controller
         return view('auth.perfil', compact('user', 'rol'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request)
     {
         $usuario = User::findOrFail(Auth::User()->id);
-        
         $request->validate([
             'nombre' => ['required', 'string', 'max:50'],
             'apellido_Paterno' => ['required', 'string', 'max:50'],

@@ -23,7 +23,7 @@
                         </div>
                         <div class="card-body">
 
-                            <x-form.form method="put" action="{{ route('perfil.update') }}">
+                            <x-form.form method="put" action="{{ route('perfil.update',Auth::user()->id) }}">
                                 <div class="row mb-3">
                                     <x-form.field-lf name="nombre" value="{{ $user->nombre }}" readonly required>
                                         Nombre

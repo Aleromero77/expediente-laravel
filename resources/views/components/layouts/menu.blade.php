@@ -7,7 +7,7 @@
          @isSistemas
         <a class="nav-link" href="{{route('roles.index')}}">
             <div class="sb-nav-link-icon"><i class="fa-solid fa-lock"></i></div>
-             Roles
+             Lista de Roles
         </a>
        
         <div class="sb-sidenav-menu-heading">PERSONAL</div>

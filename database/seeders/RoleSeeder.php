@@ -21,19 +21,21 @@ class RoleSeeder extends Seeder
         $terapeuta = Role::create(['name' => 'terapeuta']);
         $paciente = Role::create(['name' => 'paciente']);
 
-        
+
 
         // ||--------------------------PERMISOS VARIADOS --------------------------------------||
-         $permission = Permission::create(['name' => 'users'])
-                        ->syncRoles($sistemas,$recepcion);
+        $permission = Permission::create(['name' => 'users'])
+            ->syncRoles($sistemas, $recepcion);
         $permission = Permission::create(['name' => 'roles'])
-                        ->syncRoles($sistemas,$recepcion);
+            ->syncRoles($sistemas, $recepcion);
 
-        
+        $permission = Permission::create(['name' => 'rol'])
+            ->syncRoles($sistemas, $recepcion);
+
         // ||--------------------------PERMISOS UNICOS --------------------------------------||
-        
-       // $permission = Permission::create(['name' => 'users'])->syncRoles($sistemas);
-        
+
+        // $permission = Permission::create(['name' => 'users'])->syncRoles($sistemas);
+
 
     }
 }

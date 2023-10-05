@@ -14,7 +14,8 @@
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
-                    Tabla de todos los roles registrados en la base de datos Yoloma, cada rol cuenta con permisos para acceder a ciertas rutas.
+                    Tabla de todos los roles registrados en la base de datos Yoloma, cada rol cuenta con permisos para
+                    acceder a ciertas rutas.
 
                 </div>
             </div>
@@ -31,6 +32,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
+                                <th>Registrado</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -57,6 +59,17 @@
                         },
                         {
                             data: 'name'
+                        },
+                        {
+                            "data": "created_at",
+                            "render": function(data) {
+                                // Formatear la fecha como "dd/mm/yyyy"
+                                var date = new Date(data);
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                return day + '/' + month + '/' + year;
+                            }
                         },
                         {
                             data: 'btn'

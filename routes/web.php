@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\InicioController;
 use App\Http\Controllers\Admin\PerfilController;
+use App\Http\Controllers\Admin\RolController;
 use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -24,14 +25,22 @@ Route::middleware(['auth'])->group(function () {
                 ->parameters(['usuarios' => 'users'])
                 ->names('users');
                 
+        Route::resource('perfil', PerfilController::class)
+                ->only('edit', 'update')
+                ->names('perfil');
+
+        Route::resource('rol', RolController::class)
+                ->only('edit', 'update')
+                ->names('rol');
+
         Route::resource('roles', RolesController::class)
                 ->names('roles');
-                
+
 
         Route::get('dataTables', [UserController::class, 'usersTables'])->name('dataTables');
         Route::get('dataRolesTable', [RolesController::class, 'dataRolesTable'])->name('dataRolesTable');
         Route::get('inicio', [InicioController::class, 'contarRoles'])->name('inicio');
 
-        Route::get('perfil', [PerfilController::class, 'edit'])->name('perfil.edit');
-        Route::put('perfil', [PerfilController::class, 'update'])->name('perfil.update');
+        // Route::get('perfil', [PerfilController::class, 'edit'])->name('perfil.edit');
+        // Route::put('perfil', [PerfilController::class, 'update'])->name('perfil.update');
 });

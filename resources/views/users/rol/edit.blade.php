@@ -19,7 +19,7 @@
                         </div>
                         <div class="card-body">
 
-                            <x-form.form method="post" action="{{ route('roles.update', $user->id) }}">
+                            <x-form.form method="post" action="{{ route('rol.update', $user->id) }}">
                                 @method('PUT')
                                 <div class="row mb-3">
 
@@ -45,39 +45,7 @@
                             </x-form.form>
 
 
-                            {{-- <x-form.form method="get">
-                                <div class="row mb-3">
-                                    <x-form.field-lf name="nombre" value="{{ $user->nombre }}" readonly>
-                                        Nombre
-                                    </x-form.field-lf>
-
-                                    <x-form.field-lf name="apellido_Paterno" value=" {{ $user->apellido_Paterno }}" readonly
-                                        class="mb-4">
-                                        Apellido Paterno
-                                    </x-form.field-lf>
-
-                                    <x-form.field-lf name="apellido_Materno" value="{{ $user->apellido_Materno }}" readonly>
-                                        Apellido Materno
-                                    </x-form.field-lf>
-
-                                    <x-form.field-lf name="genero" value="{{ $user->genero }}" readonly>
-                                        Genero
-                                    </x-form.field-lf>
-
-                                </div>
-                                <x-form.field-xl name="domicilio" value="{{ $user->domicilio }}" readonly>
-                                    Domicilio
-                                </x-form.field-xl>
-                                <div class="row mb-3">
-                                    <x-form.field-lf name="telefono" value="{{ $user->telefono }}" readonly>
-                                        Telefono
-                                    </x-form.field-lf>
-
-                                    <x-form.field-lf name="correo" value="{{ $user->correo }}" type="email" readonly>
-                                        Correo
-                                    </x-form.field-lf>
-                                </div>
-                            </x-form.form> --}}
+                          
                         </div>
 
                     </div>
