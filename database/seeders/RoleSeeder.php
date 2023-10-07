@@ -24,12 +24,12 @@ class RoleSeeder extends Seeder
 
 
         // ||--------------------------PERMISOS VARIADOS --------------------------------------||
-        $permission = Permission::create(['name' => 'users'])
+        $permission = Permission::create(['name' => 'users','description' =>'Control de usuarios'])
             ->syncRoles($sistemas, $recepcion);
-        $permission = Permission::create(['name' => 'roles'])
+        $permission = Permission::create(['name' => 'roles','description' =>'Control de Roles'])
             ->syncRoles($sistemas, $recepcion);
 
-        $permission = Permission::create(['name' => 'rol'])
+        $permission = Permission::create(['name' => 'rol','description' =>'Asignacion de Roles'])
             ->syncRoles($sistemas, $recepcion);
 
         // ||--------------------------PERMISOS UNICOS --------------------------------------||

@@ -10,7 +10,7 @@
             <h1 class="mt-4">Tablas de Roles</h1>
             <ol class="breadcrumb mb-4">
                 <li class="breadcrumb-item"><a href="{{ route('inicio') }}">Incio</a></li>
-                <li class="breadcrumb-item active">Tablas</li>
+                <li class="breadcrumb-item active">Lista de Roles</li>
             </ol>
             <div class="card mb-4">
                 <div class="card-body">
