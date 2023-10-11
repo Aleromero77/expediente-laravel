@@ -23,18 +23,18 @@
                         </div>
                         <div class="card-body">
 
-                            <x-form.form method="put" action="{{ route('perfil.update',Auth::user()->id) }}">
+                            <x-form.form method="put" action="{{ route('users.update', $user->id) }}">
                                 <div class="row mb-3">
-                                    <x-form.field-lf name="nombre" value="{{ $user->nombre }}" readonly required>
+                                    <x-form.field-lf name="nombre" value="{{ $user->nombre }}" required>
                                         Nombre
                                     </x-form.field-lf>
 
-                                    <x-form.field-lf name="apellido_Paterno" value=" {{ $user->apellido_Paterno }}" readonly
+                                    <x-form.field-lf name="apellido_Paterno" value=" {{ $user->apellido_Paterno }}"
                                         class="mb-4" required>
                                         Apellido Paterno
                                     </x-form.field-lf>
 
-                                    <x-form.field-lf name="apellido_Materno" value="{{ $user->apellido_Materno }} " readonly
+                                    <x-form.field-lf name="apellido_Materno" value="{{ $user->apellido_Materno }}"
                                         required>
                                         Apellido Materno
                                     </x-form.field-lf>
@@ -53,7 +53,7 @@
                                         Telefono    <small>10 digitos</small>
                                     </x-form.field-lf>
 
-                                    <x-form.field-lf name="correo" value="{{ $user->correo }}" type="email" required >
+                                    <x-form.field-lf name="correo" value="{{ $user->correo }}" type="email" required>
                                         Correo
                                     </x-form.field-lf>
                                 </div>

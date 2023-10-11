@@ -37,3 +37,13 @@ body {
     background-color: #007BFF;
     color: #fff;
   }
+
+  .button-group {
+    display: flex; /* Hace que los elementos sean flexibles en una fila */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+  
+  .button-group a, .button-group form {
+    margin-right: 10px; /* Añade un margen entre los botones */
+  }
+  

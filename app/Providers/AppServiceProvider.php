@@ -27,20 +27,23 @@ class AppServiceProvider extends ServiceProvider
         Route::resourceVerbs([
             'create' => 'crear',
             'edit' => 'editar',
-            
+
         ]);
 
-        Blade::if('isAdmin', function () {
+        Blade::if('isSistemas', function () {
             return auth()->user()->hasRole('sistemas');
-        });
+        });//El que todo lo ve
 
-        Blade::if('isAdminOrRecep', function () {
-            return auth()->user()->hasRole('sistemas') || auth()->user()->hasRole('recepcion');
-        });
-    
-        Blade::if('isUser', function () {
-            return auth()->user()->hasRole('terapeuta');
-        });
+        Blade::if('isCoordinacion', function () {
+            return auth()->user()->hasRole('coordinacion');
+        }); //Puede ver Pacientes-Terapeutas
 
+        Blade::if('isRecepcion', function () {
+            return auth()->user()->hasRole('recepcion');
+        }); //Solo ve info general de  pacientes
         
-    }}
+        Blade::if('isUser', function () {
+            return auth()->user()->hasRole('paciente');
+        });//Solo su perfil, expediente y su terapeuta asignado
+    }
+}

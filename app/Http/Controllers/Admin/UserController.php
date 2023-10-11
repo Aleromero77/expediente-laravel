@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:users')->only('store', 'create','edit');
+        $this->middleware('can:users');
     }
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class UserController extends Controller
     {
 
         $users = User::all();
-        return view('dashboard.consultasUsers', compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -31,7 +31,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        return view('users.create');
     }
 
     /**
@@ -69,43 +69,44 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        if (Auth::user()->hasRole('sistemas')) {
-            $roles = Role::skip(1)->take(4)->get();
-        }else if (Auth::user()->hasRole('recepcion')) {
-            $roles = Role::skip(2)->take(4)->get();
-        }else{
-            $roles = Role::skip(3)->take(4)->get();
-        }
-        
-        
-        $user = User::findOrFail($id);
-        $rol = $user->getRoleNames()->first();
-        
-        return view('auth.info', compact('user', 'roles', 'rol'));
+        //     if (Auth::user()->hasRole('sistemas')) {
+        //         $roles = Role::skip(1)->take(4)->get();
+        //     }else if (Auth::user()->hasRole('recepcion')) {
+        //         $roles = Role::skip(2)->take(4)->get();
+        //     }else{
+        //         $roles = Role::skip(3)->take(4)->get();
+        //     }
+
+
+        //     $user = User::findOrFail($id);
+        //     $rol = $user->getRoleNames()->first();
+
+        //     return view('auth.info', compact('user', 'roles', 'rol'));
     }
 
     public function roles(Request $request, User  $user)
     {
-        $currentRoles = $user->getRoleNames();
-        $newRole = Role::where('name', $request->roles)->first();
-        
-        if (Auth::user()->hasRole('sistemas') || Auth::user()->hasRole('recepcion') ) { // you can pass an id or slug
-            if ($user->hasRole($request->roles)) {
-                return redirect()->back()->with('info', 'El usuario ya tiene el rol.');
-            }
-            if (!empty($currentRoles)) {
-                $user->removeRole($currentRoles[0]);
-            } 
-            
-            if ($newRole) {
-                $user->assignRole($newRole);
-                return redirect()->back()->with('success', 'Rol actualizado con éxito.');
-            } 
-        }
-        else{
-            return redirect()->back()->with('error', 'El nuevo rol no existe.');
-        }
-        
+
+        // $currentRoles = $user->getRoleNames()->first();
+        // $newRole = Role::where('name', $request->roles)->first();
+
+        // if (Auth::user()->hasRole('sistemas') || Auth::user()->hasRole('recepcion') ) { // you can pass an id or slug
+        //     if ($user->hasRole($request->roles)) {
+        //         return redirect()->back()->with('info', 'El usuario ya tiene el rol.');
+        //     }
+        //     if (!empty($currentRoles)) {
+        //         $user->removeRole($currentRoles[0]);
+        //     } 
+
+        //     if ($newRole) {
+        //         $user->assignRole($newRole);
+        //         return redirect()->back()->with('success', 'Rol actualizado con éxito.');
+        //     } 
+        // }
+        // else{
+        //     return redirect()->back()->with('error', 'El nuevo rol no existe.');
+        // }
+
     }
 
     /**
@@ -113,10 +114,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        
         $user = User::findOrFail($id);
         $rol = $user->getRoleNames()->first();
-        return view('auth.perfil', compact('user','rol'));
+        return view('users.perfil', compact('user', 'rol'));
     }
 
     /**
@@ -163,12 +163,5 @@ class UserController extends Controller
             ->addColumn('btn', 'dashboard.actions')
             ->rawColumns(['btn'])
             ->toJson();
-    }
-
-    public function obtenerTotalUsuarios()
-    {
-        $totalUsuarios = User::count();
-
-        return view('dashboard.inicio', ['totalUsuarios' => $totalUsuarios]);
     }
 }

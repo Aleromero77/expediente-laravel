@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css') }}">
     <script src="{{asset('https://code.jquery.com/jquery-3.6.0.min.js')}}"></script>
     <script src="{{ asset('https://use.fontawesome.com/releases/v6.3.0/js/all.js') }}" crossorigin="anonymous"></script>
-
+    
     @yield('css')
 </head>
 
