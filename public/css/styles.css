@@ -257,6 +257,9 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   text-decoration: none;
 }
 
+
+
+
 pre,
 code,
 kbd,
@@ -11271,3 +11274,11 @@ body {
   font-size: 0.75rem;
   border-radius: 0.375rem !important;
 }
+
+.btn-group a, .btn-group-vertical a {
+  border-radius: 20px;
+  margin-right: 10px; 
+}
+
+
+

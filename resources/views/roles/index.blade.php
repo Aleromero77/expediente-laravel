@@ -6,6 +6,9 @@
 
 <x-layouts.app title="Listado de Roles">
     <main>
+        @if (session('success'))
+            <x-sweetAlert2.success :title="'Se elimino el rol correctamente.'" />
+        @endif
         <div class="container-fluid px-4">
             <h1 class="mt-4">Tablas de Roles</h1>
             <ol class="breadcrumb mb-4">
