@@ -11275,10 +11275,15 @@ body {
   border-radius: 0.375rem !important;
 }
 
-.btn-group a, .btn-group-vertical a {
-  border-radius: 20px;
-  margin-right: 10px; 
+.button-group {
+  display: flex; /* Hace que los elementos sean flexibles en una fila */
+  align-items: center; /* Centra verticalmente los elementos */
 }
+
+.button-group a, .button-group form {
+  margin-right: 10px; /* Añade un margen entre los botones */
+}
+
 
 
 

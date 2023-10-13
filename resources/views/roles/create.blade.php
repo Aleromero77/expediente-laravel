@@ -1,7 +1,7 @@
 <x-layouts.app title="Crear Rol">
     <main>
-        @if (session('error'))
-            <x-sweetAlert2.danger :title="'No tienes permisos'" />
+        @if (session('danger'))
+            <x-sweetAlert2.danger :title="'El rol ya existe'" />
         @endif
         @if (session('success'))
             <x-sweetAlert2.success :title="'Rol actualizado con éxito.'" />

@@ -45,7 +45,7 @@ class UserController extends Controller
             'apellido_Paterno' => ['required', 'string', 'max:50'],
             'apellido_Materno' => ['required', 'string', 'max:50'],
             'genero' => ['required', 'string', 'max:50'],
-            'domicilio' => ['required', 'string', 'max:50'],
+            'domicilio' => ['required', 'string', 'max:100'],
             'telefono' => ['required', 'regex:/^[0-9]{10}$/'],
             'correo' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'contrasena' => ['required'],
@@ -129,7 +129,7 @@ class UserController extends Controller
             'apellido_Paterno' => ['required', 'string', 'max:50'],
             'apellido_Materno' => ['required', 'string', 'max:50'],
             'genero' => ['required', 'string', 'max:50'],
-            'domicilio' => ['required', 'string', 'max:50'],
+            'domicilio' => ['required', 'string', 'max:100'],
             'telefono' => ['required', 'regex:/^[0-9]{10}$/'],
             'correo' => ['required'],
         ]);

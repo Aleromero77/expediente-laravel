@@ -33,6 +33,8 @@
                                 <th>Nombre(s)</th>
                                 <th>Apellido Paterno</th>
                                 <th>Apellido Materno</th>
+                                <th>Correo</th>
+                                <th>Registro</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -67,6 +69,20 @@
                             data: 'apellido_Materno'
                         },
                         {
+                            data: 'correo'
+                        }, 
+                        {
+                            "data": "created_at",
+                            "render": function(data) {
+                                // Formatear la fecha como "dd/mm/yyyy"
+                                var date = new Date(data);
+                                var day = date.getDate();
+                                var month = date.getMonth() + 1;
+                                var year = date.getFullYear();
+                                return day + '/' + month + '/' + year;
+                            }
+                        },
+                        {
                             data: 'btn'
                         }
                     ],
@@ -96,5 +112,6 @@
                 }
             });
         </script>
+        
     @endsection
 </x-layouts.app>
