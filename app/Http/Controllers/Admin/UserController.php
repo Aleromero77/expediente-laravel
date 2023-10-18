@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Arr;
@@ -50,7 +51,7 @@ class UserController extends Controller
             'correo' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             'contrasena' => ['required'],
         ]);
-        User::create([
+        $user= User::create([
             'nombre' => $request->nombre,
             'apellido_Paterno' => $request->apellido_Paterno,
             'apellido_Materno' => $request->apellido_Materno,
@@ -59,7 +60,13 @@ class UserController extends Controller
             'telefono' => $request->telefono,
             'correo' => $request->correo,
             'contrasena' =>  Hash::make($request->contrasena)
-        ])->assignRole('paciente');
+        ]);
+
+        $user->assignRole('paciente');
+
+        $paciente = new Paciente();
+
+        $user->paciente()->save($paciente);
 
         return to_route('users.create')->with('info', 'ok');
     }

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Paciente;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
@@ -36,13 +38,17 @@ class DatabaseSeeder extends Seeder
             ->each(function ($user) use (&$correosUnicos) {
                 do {
                     $correo = fake()->unique()->email();
+                    $user->assignRole('paciente');
+                    $paciente = new Paciente([
+                    'informacion_adicional' => 'Información adicional del paciente',
+                    ]);
+                    $user->paciente()->save($paciente);
                 } while (in_array($correo, $correosUnicos));
 
                 $user->update(['correo' => $correo]);
                 $correosUnicos[] = $correo;
 
                 $user->update(['contrasena' => Hash::make('123456789')]);
-                $user->assignRole('paciente');
             });
     }
 }

@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Auth;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Paciente;
 
-class User extends Auth 
+class User extends Auth
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -44,4 +45,8 @@ class User extends Auth
         'contrasena' => 'hashed',
     ];
 
+    public function paciente()
+    {
+        return $this->hasOne(Paciente::class);
+    }
 }
