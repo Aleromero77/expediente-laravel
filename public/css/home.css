@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../img/home/Inicio.png');
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+  }
+  .content {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 36px;
+  }
+  
+  .button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: transparent;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .button-link:hover {
+    background-color: #007BFF;
+    color: #fff;
+  }
+
+  .button-group {
+    display: flex; /* Hace que los elementos sean flexibles en una fila */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+  
+  .button-group a, .button-group form {
+    margin-right: 10px; /* Añade un margen entre los botones */
+  }
+  
